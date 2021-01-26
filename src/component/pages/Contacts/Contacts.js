@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from './styles.scss'
-console.log(styles.contacts)
+import './styles.scss'
 
 const Contacts = () => {
     return (
