@@ -21,7 +21,7 @@ const ListProduct = ({ campaigns, handleRemoveClick, handleEditClick }) => {
 
     const elm = campaigns.map((v, i) => {
         const search = (v.name === isSearch) || (isSearch === '') ? true : false
-        const display = v.status === 'true' ? true : false
+        const display = v.status === true ? true : false
         return display && search && (
             <div key={i} className="col-md-3 col-sm-6 product">
                 <button

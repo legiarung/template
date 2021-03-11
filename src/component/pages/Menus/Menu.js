@@ -19,6 +19,9 @@ const Menu = () => {
                             <Link className="nav-link" to="/products">Products</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to="/products/ApplicationFirebase">ApplicationFirebase</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to="/contacts">Contacts</Link>
                         </li>
                         <li className="nav-item">

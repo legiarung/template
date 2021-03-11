@@ -23,6 +23,12 @@ const AddProduct = () => {
     const [success, setsuccess] = useState(false);
 
     const onSubmit = (data) => {
+        if (data.status === 'true') {
+            data.status = true
+        } else {
+            data.status = false
+        }
+        console.log(data)
         if (idAddMode) {
             dispatch(AddCampaign(data))
             // const abc = setTimeout(() => setsuccess(true), 1000)

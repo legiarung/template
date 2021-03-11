@@ -1,26 +1,39 @@
 import axios from 'axios'
-// import { reloadUserAuth, userToken } from '../../../components/utils/googleAuth'
+import firebase from 'firebase'
+// import { reloadUserAuth, userToken } from './gooogleAuth'
 const USER_KEY = 'user'
 
 const instance = axios.create({
     // baseURL: __API_URL__
 })
 
-instance.interceptors.request.use(
-    config => {
-        // config.headers = {
-        //   Authorization: `Bearer ${userToken()}`,
-        //   'x-auth-token-type': 'internal-manager'
-        // }
-        return config
-    },
+instance.interceptors.request.use(async (config) => {
+    const currentUser = firebase.auth().onAuthStateChanged(async (user) => {
+        if (!user) {
+            console.log('user not login')
+            return
+        }
+        const token = await user.getIdToken()
+        config.headers.Authorization = `Bearer ${token}`
+        console.log(token)
+    }
+    );
+    console.log(currentUser)
+    // console.log(currentUser)
+    // if (currentUser) {
+    //     const userToken = await currentUser.getIdToken();
+    //     console.log('hehe', userToken)
+    //     config.headers.Authorization = `Bearer ${userToken}`
+    // }
+    return config
+},
     error => {
         return Promise.reject(error)
     }
 )
 
 export const get = async (url, params) => {
-    //   await reloadUserAuth()
+    // await reloadUserAuth()
     try {
         const res = await instance.get(url, { params })
         return res
@@ -34,7 +47,6 @@ export const get = async (url, params) => {
 }
 
 export const post = async (url, data) => {
-    // 並列のAPIコールに失敗するため、一時コメントアウト
     // await reloadUserAuth()
     try {
         const res = await instance.post(url, data)
@@ -63,7 +75,7 @@ export const put = async (url, data) => {
 }
 
 export const remove = async (url, params) => {
-    //   await reloadUserAuth()
+    // await reloadUserAuth()
     try {
         const res = await instance.delete(url, { params })
         return res
@@ -77,7 +89,7 @@ export const remove = async (url, params) => {
 }
 
 export const upload = async (url, formData) => {
-    //   await reloadUserAuth()
+    // await reloadUserAuth()
     try {
         const res = await instance.post(url, formData, {
             headers: {

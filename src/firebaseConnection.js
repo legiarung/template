@@ -1,13 +1,14 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
 var firebaseConfig = {
-    apiKey: "AIzaSyB9w42aIB9iTCBY9Ze0N18L3rZR1IqdIRQ",
-    authDomain: "fir-tech-new.firebaseapp.com",
-    databaseURL: "https://fir-tech-new-default-rtdb.firebaseio.com",
-    projectId: "fir-tech-new",
-    storageBucket: "fir-tech-new.appspot.com",
-    messagingSenderId: "666871411123",
-    appId: "1:666871411123:web:8c13f37aed7d0772fe5bc6",
-    measurementId: "G-YFQ08VF09J"
+    apiKey: "AIzaSyATV9hgGNUjf8ZJMDf-8j5GjCSjFDA_Ljo",
+    authDomain: "trunglereact-1.firebaseapp.com",
+    projectId: "trunglereact-1",
+    storageBucket: "trunglereact-1.appspot.com",
+    messagingSenderId: "392355524709",
+    appId: "1:392355524709:web:8718abf0390a33b438568c",
+    measurementId: "G-CS5LEBK0D2"
 };
 firebase.initializeApp(firebaseConfig);
 
