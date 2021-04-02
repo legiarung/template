@@ -1,6 +1,4 @@
 import axios from 'axios'
-import firebase from 'firebase'
-// import { reloadUserAuth, userToken } from './gooogleAuth'
 const USER_KEY = 'user'
 
 const instance = axios.create({
@@ -8,23 +6,7 @@ const instance = axios.create({
 })
 
 instance.interceptors.request.use(async (config) => {
-    const currentUser = firebase.auth().onAuthStateChanged(async (user) => {
-        if (!user) {
-            console.log('user not login')
-            return
-        }
-        const token = await user.getIdToken()
-        config.headers.Authorization = `Bearer ${token}`
-        console.log(token)
-    }
-    );
-    console.log(currentUser)
-    // console.log(currentUser)
-    // if (currentUser) {
-    //     const userToken = await currentUser.getIdToken();
-    //     console.log('hehe', userToken)
-    //     config.headers.Authorization = `Bearer ${userToken}`
-    // }
+
     return config
 },
     error => {

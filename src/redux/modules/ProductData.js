@@ -6,7 +6,8 @@ export const setCampaigns = createAction(SET_CAMPAIGNS)
 
 export const fetchProducts = () => async dispatch => {
     try {
-        const res = await get('https://5e83062078337f00160ae8ec.mockapi.io/api/products')
+        const res = await get('http://localhost:5000/food')
+        console.log(res)
         dispatch(setCampaigns(res.data))
         console.log(res.data)
     } catch (e) {
